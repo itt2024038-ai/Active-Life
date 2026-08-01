@@ -8,8 +8,8 @@ ActiveLife is an interactive web application designed to help individuals plan, 
 - **University:** Rajarata University of Sri Lanka
 
 ## 👥 Group Members
-- N.H.D.N.S.Fonseka (ITT/2024/038)
-- R.M.Kavindya (ITT/2024/064)
+- N.H.D.N.S.Fonseka (ITT/2024/038 - 2723)
+- R.M.Kavindya Madhushani (ITT/2024/064  - 2749)
 
 ## 🛠️ Technology Stack (Phase 2)
 - **Frontend Structure:** HTML5
