@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ActiveLife Tracker - Dashboard</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f4f6f8;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background: linear-gradient(rgba(244, 246, 248, 0.88), rgba(214, 218, 222, 0.88)),
+                  url('https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1920') center/cover no-repeat;
+    }
+   
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #ffffff;
+      padding: 15px 40px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo-box {
+      border: 1px solid #333;
+      padding: 4px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .brand-name {
+      font-weight: bold;
+      font-size: 18px;
+      color: #2c3e50;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-btn {
+      background-color: #2b6cb0;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 14px;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: #555;
+      font-size: 14px;
+    }
+
+    .nav-link:hover {
+      color: #000;
+    }
+
+    main {
+      padding: 30px 50px;
+      flex: 1;
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 25px;
+      letter-spacing: 1px;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      position: relative;
+      height: 120px;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 15px;
+      color: #000;
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: inherit;
+      opacity: 0.35;
+      z-index: 1;
+    }
+
+    .card-content {
+      position: relative;
+      z-index: 2;
+      color: #111111;
+      font-weight: 900;
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.9), 0 0 3px rgba(255, 255, 255, 1);
+    }
+
+    .card-title {
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 15px;
+      margin-bottom: 5px;
+    }
+
+    .card-info {
+      font-size: 15px;
+      color: #090909;
+      font-weight: bold;
+    }
+
+    .monday { background-image: url('https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=400'); }
+    .monday::before { background: rgba(214, 231, 236, 0.88); }  
+
+    .tuesday { background-image: url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=400'); }
+    .tuesday::before { background: rgba(240, 203, 192, 0.8); }
+
+    .wednesday { background-image: url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=400'); }
+    .wednesday::before { background: rgba(238, 232, 170, 0.8); }
+
+    .thursday { background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=400'); }
+    .thursday::before { background: rgba(219, 112, 147, 0.8); }
+
+    .friday { background-image: url('https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=400'); }
+    .friday::before { background: rgba(220, 224, 230, 0.85); }
+
+    .saturday { background-image: url('https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=400'); }
+    .saturday::before { background: rgba(144, 238, 144, 0.8); }
+
+    .sunday {
+      grid-column: 2;
+      background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=400');
+    }
+    .sunday::before { background: rgba(152, 251, 152, 0.85); }
+
+    .action-section {
+      margin-top: 15px;
+    }
+
+    .add-btn {
+      text-decoration: none;
+      color: #000;
+      font-weight: 600;
+      font-size: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    footer {
+      padding: 20px 50px;
+      font-size: 12px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-container">
+      <div class="logo-box">
+        <img src="https://cdn-icons-png.flaticon.com/512/2964/2964514.png" width="30" alt="Logo">
+      </div>
+      <span class="brand-name">ACTIVE LIFE</span>
+    </div>
+    <nav>
+      <a href="index.html" class="nav-btn">Dashboard</a>
+      <a href="log-workout.html" class="nav-link">Log Workout</a>
+      <a href="weekly-report.html" class="nav-link">Weekly Report</a>
+      <a href="#" class="nav-link">Logout</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>ACTIVE LIFE</h1>
+
+    <div class="grid-container">
+      <div class="card monday">
+        <div class="card-content">
+          <div class="card-title">MONDAY</div>
+          <div class="card-info">30 Mins<br>Cardio</div>
+        </div>
+      </div>
+
+      <div class="card tuesday">
+        <div class="card-content">
+          <div class="card-title">TUESDAY</div>
+          <div class="card-info">Rest day</div>
+        </div>
+      </div>
+
+      <div class="card wednesday">
+        <div class="card-content">
+          <div class="card-title">WEDNESDAY</div>
+          <div class="card-info">30 Mins<br>Yoga</div>
+        </div>
+      </div>
+
+      <div class="card thursday">
+        <div class="card-content">
+          <div class="card-title">THURSDAY</div>
+          <div class="card-info">60 Mins<br>Strength Training</div>
+        </div>
+      </div>
+
+      <div class="card friday">
+        <div class="card-content">
+          <div class="card-title">FRIDAY</div>
+          <div class="card-info">45 Mins<br>Strength Training (Legs/Core)</div>
+        </div>
+      </div>
+
+      <div class="card saturday">
+        <div class="card-content">
+          <div class="card-title">SATURDAY</div>
+          <div class="card-info">30 Mins<br>Active Recovery (Yoga/Stretching)</div>
+        </div>
+      </div>
+
+      <div class="card sunday">
+        <div class="card-content">
+          <div class="card-title">SUNDAY REST DAY</div>
+          <div class="card-info">Weekly Calculation<br>Complete</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <a href="log-workout.html" class="add-btn">+ Log Quick Workout</a>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2026 ActiveLife Tracker. All Rights Reserved.
+  </footer>
+
+</body>
+</html>
