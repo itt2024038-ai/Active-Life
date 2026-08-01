@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log Workout - ActiveLife Tracker</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background: linear-gradient(rgba(244, 246, 248, 0.88), rgba(214, 218, 222, 0.88)), 
+                  url('https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1920') center/cover no-repeat;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #ffffff;
+      padding: 15px 40px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo-box {
+      border: 1px solid #333;
+      padding: 4px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .brand-name {
+      font-weight: bold;
+      font-size: 18px;
+      color: #2c3e50;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-btn {
+      background-color: #2b6cb0;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 14px;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: #555;
+      font-size: 14px;
+    }
+
+    .nav-link:hover {
+      color: #000;
+    }
+
+    main {
+      padding: 30px 50px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 25px;
+      letter-spacing: 1px;
+      align-self: flex-start;
+    }
+
+    .form-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 550px;
+      border-radius: 8px;
+      overflow: hidden;
+      padding: 35px;
+      background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600');
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .form-wrapper::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.92);
+      z-index: 1;
+    }
+
+    .form-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .form-title {
+      font-size: 20px;
+      font-weight: 900;
+      text-align: center;
+      margin-bottom: 25px;
+      color: #111;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .field-group {
+      margin-bottom: 20px;
+    }
+
+    .field-group label {
+      display: block;
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 8px;
+      color: #222;
+    }
+
+    .field-group select, 
+    .field-group input {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+      background-color: #fff;
+      outline: none;
+    }
+
+    .field-group select:focus, 
+    .field-group input:focus {
+      border-color: #2b6cb0;
+    }
+
+    .error-text {
+      color: #e53e3e;
+      font-size: 12px;
+      margin-top: 5px;
+      display: none;
+      font-weight: 600;
+    }
+
+    .submit-btn {
+      width: 100%;
+      background-color: #2b6cb0;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      font-size: 15px;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background-color 0.2s;
+    }
+
+    .submit-btn:hover {
+      background-color: #1e4e8c;
+    }
+
+    footer {
+      padding: 20px 50px;
+      font-size: 12px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-container">
+      <div class="logo-box">
+        <img src="https://cdn-icons-png.flaticon.com/512/2964/2964514.png" width="30" alt="Logo">
+      </div>
+      <span class="brand-name">ACTIVE LIFE</span>
+    </div>
+    <nav>
+      <a href="index.html" class="nav-link">Dashboard</a>
+      <a href="log-workout.html" class="nav-btn">Log Workout</a>
+      <a href="weekly-report.html" class="nav-link">Weekly Report</a>
+      <a href="#" class="nav-link">Logout</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>ACTIVE LIFE</h1>
+
+    <div class="form-wrapper">
+      <div class="form-content">
+        <div class="form-title">LOG YOUR WORKOUT</div>
+
+        <form id="workoutForm">
+          <div class="field-group">
+            <label for="daySelect">Select Day:</label>
+            <select id="daySelect" required>
+              <option value="Monday">Monday</option>
+              <option value="Tuesday">Tuesday</option>
+              <option value="Wednesday">Wednesday</option>
+              <option value="Thursday">Thursday</option>
+              <option value="Friday">Friday</option>
+              <option value="Saturday">Saturday</option>
+              <option value="Sunday">Sunday</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label for="exerciseType">Exercise Type:</label>
+            <select id="exerciseType" required>
+              <option value="Running">Running / Cardio</option>
+              <option value="Yoga">Yoga / Stretching</option>
+              <option value="Strength Training">Strength Training</option>
+              <option value="Rest Day">Rest Day</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label for="duration">Duration (in Minutes):</label>
+            <input type="number" id="duration" placeholder="45" min="1" required>
+            <div id="valError" class="error-text">* Duration must be a positive number!</div>
+          </div>
+
+          <button type="submit" class="submit-btn">Save Workout Routine</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2026 ActiveLife Tracker. All Rights Reserved.
+  </footer>
+
+  <script>
+    const form = document.getElementById('workoutForm');
+    const durationInput = document.getElementById('duration');
+    const valError = document.getElementById('valError');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const val = parseInt(durationInput.value, 10);
+
+      if (isNaN(val) || val <= 0) {
+        valError.style.display = 'block';
+      } else {
+        valError.style.display = 'none';
+        alert('Workout Routine Saved Successfully!');
+        form.reset();
+      }
+    });
+  </script>
+
+</body>
+</html>
